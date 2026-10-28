@@ -8,7 +8,9 @@ import type { Brand, Category, Enquiry, Product } from "./types";
 // function signatures are what the pages depend on, so swapping this module
 // for Postgres/Prisma or a headless CMS later does not touch the UI.
 
-const ROOT = path.join(process.cwd(), "data", "runtime");
+// Vercel's filesystem is read-only except /tmp, which is per-instance and
+// temporary — fine for the demo; production should use a database/blob store.
+const ROOT = process.env.VERCEL ? path.join("/tmp", "hearthline") : path.join(process.cwd(), "data", "runtime");
 export const UPLOAD_DIR = path.join(ROOT, "uploads");
 const PRODUCTS_FILE = path.join(ROOT, "products.json");
 const ENQUIRIES_FILE = path.join(ROOT, "enquiries.json");
