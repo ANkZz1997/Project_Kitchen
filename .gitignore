@@ -1,0 +1,9 @@
+node_modules
+.next
+out
+.env
+.env.local
+*.tsbuildinfo
+next-env.d.ts
+# runtime data written by admin / enquiry form
+/data/runtime
